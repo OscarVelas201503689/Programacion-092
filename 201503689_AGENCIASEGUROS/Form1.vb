@@ -14,7 +14,7 @@
             Exit Sub
         End If
 
-        If (indice <= 7) Then
+        If (indice < 7) Then
             Edad(indice) = Val(Text_Edad.Text)
             Genero(indice) = Combo_Genero.SelectedItem
             Registro(indice) = Combo_Registro.Text
@@ -22,13 +22,13 @@
             Taller(indice) = Combo_Taller.SelectedItem.ToString()
             Deducible(indice) = Val(Text_Daños.Text) * 0.06
 
-            indice = indice + 1
-
         End If
         formatear_datos()
-        If (indice = 7) Then
+        indice = indice + 1
 
-            MsgBox("Vectores Llenos", vbExclamation, Title:="Sistema dice")
+        If (indice >= 7) Then
+
+            MsgBox("Limite de registros alcanzado", vbExclamation, Title:="Sistema dice")
 
         End If
 
@@ -83,6 +83,10 @@
         List_Taller.Items.Clear()
         List_Deducible.Items.Clear()
         Text_TotalDaños.Clear()
+
+        indice = 0
+
+        MsgBox("Vectores limpios, puede realizar de nuevo los 7 ingresos", vbOKOnly, Title:="Limpiar Vectores")
 
     End Sub
 
